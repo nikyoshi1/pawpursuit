@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Track Location</title>
+</head>
+<body>
+    <h1>Click the button to send your location!</h1>
+    <button onclick="sendLocation()">Send Location</button>
+
+    <script>
+        function sendLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    let lat = position.coords.latitude;
+                    let long = position.coords.longitude;
+                    alert('Your location is: ' + lat + ', ' + long);
+                    // Add the code to send this data via SMS (this is where Twilio comes in).
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+    </script>
+</body>
+</html>
